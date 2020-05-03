@@ -17,7 +17,7 @@ class DockerComposeSpec extends FunSuite with TestContainerForAll {
 
   override val containerDef: DockerComposeContainer.Def = DockerComposeContainer.Def(dockerComposeFile, Seq(exposedService))
 
-  test("succesfully start Nginx with docker-compose") {
+  test("successfully start Nginx with docker-compose") {
     withContainers { containers =>
       val expectedText = "If you see this page, the nginx web server is successfully installed"
 
