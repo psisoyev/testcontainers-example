@@ -9,8 +9,8 @@ class DifferentVersionsSpec extends FunSuite with TestContainersForAll {
   type Containers = PulsarContainer and PulsarContainer
 
   override def startContainers(): and[PulsarContainer, PulsarContainer] = {
-    val pulsarContainer = PulsarContainer.Def(ContainerVersion.ApachePulsar).start()
-    val pulsarContainerNew = PulsarContainer.Def(ContainerVersion.ApachePulsarNew).start()
+    val pulsarContainer = PulsarContainer.Def("2.2.0").start()
+    val pulsarContainerNew = PulsarContainer.Def("2.5.0").start()
 
     pulsarContainer and pulsarContainerNew
   }
