@@ -19,11 +19,9 @@ class DifferentVersionsSpec extends FunSuite with TestContainersForAll {
 
   test("Send and receive a message") {
     withContainers { case pulsarContainer and pulsarContainerNew =>
-      List(pulsarContainer, pulsarContainerNew).map { container =>
-        val result = scenario(container.pulsarBrokerUrl())
-
-        assert(result == Right(message))
-      }
+      List(pulsarContainer, pulsarContainerNew)
+        .map(container => scenario(container.pulsarBrokerUrl()))
+        .foreach(result => assert(result == Right(message)))
     }
   }
 
