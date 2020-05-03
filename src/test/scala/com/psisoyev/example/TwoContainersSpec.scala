@@ -8,7 +8,7 @@ import munit.FunSuite
 class TwoContainersSpec extends FunSuite with TestContainersForAll {
   type Containers = PulsarContainer and MockServerContainer
 
-  def startContainers: Containers = {
+  override def startContainers: Containers = {
     val pulsarContainer = PulsarContainer.Def(ContainerVersion.ApachePulsar).start()
     val mockServerContainer = MockServerContainer.Def(ContainerVersion.MockServer).start()
 
